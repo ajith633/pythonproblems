@@ -5,84 +5,17 @@ import os
 import random
 import re
 import sys
-
+'''
 # Complete the almostSorted function below.
-def almostSorted(arr):
-    n=len(arr)
-    low=n-1
-    high=0
-    i=0
-    j=n-1
-    if(n==2 and arr[0]>arr[1]):
-        print('yes')
-        print('swap 1 2')
-        return()
-    for i in range(n-1):
-        if(arr[i]>arr[i+1]):
-            low=i
-            break
-    else:
-        print('yes')
-        return()
-    #Now you know the index of first element that would break the ascending order
-    for j in range(n-1,0,-1):
-        if(arr[j]<arr[j-1]):
-            high=j
-            break
-    #Now you also the index of the first element from backwards that would break the descending order
-    print('i={} and j={}'.format(i,j))
-    for k in range(i,j+1):
-        if(arr[k]<arr[k+1]):
-            print('no')
-            break
-    if((arr[i]>arr[j]) or (j>0 and arr[i]>arr[j-1]) or (i<n-1 and arr[i+1]>arr[j])):
-        print('no')
-        return()
+https://www.hackerrank.com/challenges/almost-sorted/problem
+Given an array of integers, determine whether the array can be sorted in ascending order using only one of the following operations one time.
 
-
-
-    if((j-i)==2):
-        print('swap',i+1,j+1)
-    else:
-        print('reverse',i+1,j+1)
+Swap two elements.
+Reverse one sub-segment.
+Determine whether one, both or neither of the operations will complete the task. If both work, choose swap. For instance, given an array  either swap the  and , or reverse them to sort the array. Choose swap. The Output Format section below details requirements.
 
 '''
-    phase=0
-    dsc=0
-    asc2=0
-    high=0
-    loc=[]
-    for i in range(len(arr)-1):
-        if(phase==0):
-            if (arr[i]<arr[i+1]):
-                high=arr[i+1]
-            else:
-                phase=1
-                loc.append(i+1)
-        elif(phase==1):
-            if(arr[i]>arr[i+1]):
-                loc.append(i+1)
-            elif(arr[i+1]>high):
-                phase=2
-                loc.append(i+1)
-                high=arr[i+1]
-            else:
-                print('no')
-                return()
-        else:
-            if(arr[i]>arr[i+1]):
-                print('no')
-                return()
-    if(len(loc)==1 and len(arr)==2):
-        loc.append(len(arr))
-        print('swap',loc)
 
-    elif(len(loc)==2):
-        print('swap',loc)
-    else:
-        print('yes',*loc)
-
-'''
 def printyes(s,sr,a,b):
     print(s)
     print(sr,a+1,b+1)
@@ -90,7 +23,7 @@ def printyes(s,sr,a,b):
 def printyesno(s):
     print(s)
 
-def alreadysorted(arr):
+def almostsorted(arr):
     n=len(arr)
     if(n==2):
         if(arr[0]<arr[1]):
@@ -172,8 +105,5 @@ def alreadysorted(arr):
 
 if __name__ == '__main__':
     n = int(input())
-
     arr = list(map(int, input().rstrip().split()))
-
-    #almostSorted(arr)
-    alreadysorted(arr)
+    almostSorted(arr)
