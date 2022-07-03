@@ -34,11 +34,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def sumDigits(self, a, b, c):
-        s = a + b +c
-        return s%10, int(s/10)
-
-            
+ 
     def addTwoNumbersWithCarry(self, l1: Optional[ListNode], l2: Optional[ListNode], carry: int) -> Optional[ListNode]:
         if not (l1 or l2 or carry): return None
         if l1:
